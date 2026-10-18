@@ -31,5 +31,18 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Start APK build
-        run: eas build --platform android --profile preview --non-interactive --no-wait
+      - name: Build APK
+        run: eas build --platform android --profile preview --non-interactive --wait
+
+      - name: Download APK
+        shell: bash
+        run: |
+          mkdir -p output
+          eas build:download --platform android --latest --path output/FocusFlow.apk
+
+      - name: Upload FocusFlow APK
+        uses: actions/upload-artifact@v6
+        with:
+          name: FocusFlow
+          path: output/FocusFlow.apk
+          if-no-files-found: error
