@@ -23,6 +23,12 @@
     "plugins": [
       "expo-status-bar",
       "expo-font"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "826a1ad1-4d7c-4a2d-96e9-d62845da44d5"
+      }
+    },
+    "owner": "deveshis_dev"
   }
 }
