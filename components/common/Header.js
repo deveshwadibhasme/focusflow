@@ -1,8 +1,11 @@
 import { Feather } from "@expo/vector-icons";
 import { Alert, Text, TouchableOpacity, View } from "react-native";
+import { useAuth } from "../../context/AuthContext";
 
 
-export default function Header({ user, onLogout }) {
+export default function Header() {
+
+    const { user, onLogout } = useAuth()
 
     const handleProfilePress = () => {
         Alert.alert(
