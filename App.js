@@ -4,32 +4,25 @@ import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { StatusBar } from "expo-status-bar";
 import LoginScreen from "./screens/LoginScreen";
 import DashboardScreen from "./screens/DashboardScreen";
+import { useAuth } from "./context/AuthContext";
 
 export default function App() {
-  const [currentUser, setCurrentUser] = useState(null);
+  const { login, logout, isAuthenticated } = useAuth()
 
-  const handleLoginSuccess = (userData) => {
-    setCurrentUser(userData);
-  };
-
-  const handleLogout = () => {
-    setCurrentUser(null);
-  };
 
   return (
     <SafeAreaProvider>
-      <StatusBar style="dark" />
+      <StatusBar style="light" />
       <SafeAreaView
         className="flex-1 bg-[#F9FAFE]"
         edges={["top", "left", "right"]}
       >
-        {currentUser ? (
+        {isAuthenticated ? (
           <DashboardScreen
-            user={currentUser}
-            onLogout={handleLogout}
+            onLogout={logout}
           />
         ) : (
-          <LoginScreen onLoginSuccess={handleLoginSuccess} />
+          <LoginScreen onLoginSuccess={login} />
         )}
       </SafeAreaView>
     </SafeAreaProvider>

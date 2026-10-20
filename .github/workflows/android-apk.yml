@@ -1,4 +1,3 @@
-
 name: Build FocusFlow APK
 
 on:
@@ -31,5 +30,41 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Start APK build
-        run: eas build --platform android --profile preview --non-interactive --no-wait
+      - name: Build Android APK
+        run: eas build --platform android --profile preview --non-interactive --wait
+
+      - name: Download APK
+        run: |
+          mkdir -p output
+          cd output
+
+          BUILD_ID=$(eas build:list \
+            --platform android \
+            --status finished \
+            --limit 1 \
+            --json \
+            --non-interactive | jq -r '.[0].id')
+
+          if [ -z "$BUILD_ID" ] || [ "$BUILD_ID" = "null" ]; then
+            echo "Could not find a completed Android build."
+            exit 1
+          fi
+
+          eas build:download --build-id "$BUILD_ID" --non-interactive
+
+          APK=$(find . -maxdepth 1 -type f -name '*.apk' -print -quit)
+
+          if [ -z "$APK" ]; then
+            echo "No APK downloaded. Check that the preview profile produces an APK."
+            exit 1
+          fi
+
+          mv "$APK" FocusFlow.apk
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v6
+        with:
+          name: FocusFlow-APK
+          path: output/FocusFlow.apk
+          if-no-files-found: error
+          retention-days: 14
