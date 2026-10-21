@@ -2,6 +2,7 @@
   "expo": {
     "name": "Focus Flow",
     "slug": "focusflow",
+    "scheme": "focusflow",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -23,7 +24,8 @@
     },
     "plugins": [
       "expo-status-bar",
-      "expo-font"
+      "expo-font",
+      "expo-router"
     ],
     "extra": {
       "eas": {
