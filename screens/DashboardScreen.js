@@ -67,61 +67,7 @@ export default function DashboardScreen() {
       </ScrollView>
 
       {/* Fixed Bottom Navigation Bar */}
-      <View className="absolute bottom-0 left-0 right-0 bg-white border-t border-slate-100 py-3 px-6 flex-row items-center justify-around shadow-lg">
-        {/* Home Tab */}
-        <TouchableOpacity
-          onPress={() => setActiveTab("HOME")}
-          className="items-center"
-        >
-          <Ionicons
-            name={activeTab === "HOME" ? "grid" : "grid-outline"}
-            size={22}
-            color={activeTab === "HOME" ? "#4F46E5" : "#94A3B8"}
-          />
-          <Text
-            className={`text-[10px] mt-1 font-bold ${activeTab === "HOME" ? "text-indigo-600" : "text-gray-400 font-medium"
-              }`}
-          >
-            Home
-          </Text>
-        </TouchableOpacity>
 
-        {/* Tasks Tab */}
-        <TouchableOpacity
-          onPress={() => setActiveTab("TASKS")}
-          className="items-center"
-        >
-          <Ionicons
-            name={activeTab === "TASKS" ? "checkmark-circle" : "checkmark-circle-outline"}
-            size={22}
-            color={activeTab === "TASKS" ? "#4F46E5" : "#94A3B8"}
-          />
-          <Text
-            className={`text-[10px] mt-1 font-bold ${activeTab === "TASKS" ? "text-indigo-600" : "text-gray-400 font-medium"
-              }`}
-          >
-            Tasks
-          </Text>
-        </TouchableOpacity>
-
-        {/* Profile Tab */}
-        <TouchableOpacity
-          onPress={() => setActiveTab("PROFILE")}
-          className="items-center"
-        >
-          <Feather
-            name="user"
-            size={22}
-            color={activeTab === "PROFILE" ? "#4F46E5" : "#94A3B8"}
-          />
-          <Text
-            className={`text-[10px] mt-1 font-bold ${activeTab === "PROFILE" ? "text-indigo-600" : "text-gray-400 font-medium"
-              }`}
-          >
-            Profile
-          </Text>
-        </TouchableOpacity>
-      </View>
 
       {/* Manual Add Task Popup Modal */}
       <AddTaskModal

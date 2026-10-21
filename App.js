@@ -11,20 +11,20 @@ export default function App() {
 
 
   return (
-    <SafeAreaProvider>
-      <StatusBar style="light" />
-      <SafeAreaView
-        className="flex-1 bg-[#F9FAFE]"
-        edges={["top", "left", "right"]}
-      >
-        {isAuthenticated ? (
-          <DashboardScreen
-            onLogout={logout}
-          />
-        ) : (
-          <LoginScreen onLoginSuccess={login} />
-        )}
-      </SafeAreaView>
-    </SafeAreaProvider>
+    // <SafeAreaProvider>
+    // <StatusBar style="light" />
+    <SafeAreaView
+      className="flex-1 bg-[#F9FAFE]"
+      edges={["top", "left", "right"]}
+    >
+      {isAuthenticated ? (
+        <DashboardScreen
+          onLogout={logout}
+        />
+      ) : (
+        <LoginScreen onLoginSuccess={login} />
+      )}
+    </SafeAreaView>
+    // </SafeAreaProvider>
   );
 }

@@ -1,10 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./App.js",
-    "./components/**/*.{js,jsx}",
-    "./screens/**/*.{js,jsx}",
-    "./data/**/*.{js,jsx}",
+    "./App.{js,jsx,ts,tsx}",
+    "./app/**/*.{js,jsx,ts,tsx}",
+    "./components/**/*.{js,jsx,ts,tsx}",
+    "./screens/**/*.{js,jsx,ts,tsx}",
+    "./data/**/*.{js,jsx,ts,tsx}",
   ],
   safelist: [
     "bg-indigo-50",

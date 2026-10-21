@@ -2,21 +2,19 @@ import { Feather } from "@expo/vector-icons";
 import { Alert, Text, TouchableOpacity, View } from "react-native";
 import { useAuth } from "../../context/AuthContext";
 
-
 export default function Header() {
-
-    const { user, onLogout } = useAuth()
+    const { currentUser, logout } = useAuth();
 
     const handleProfilePress = () => {
         Alert.alert(
             "FocusFlow Account",
-            `Logged in as ${user?.email || "alex@focusflow.app"}`,
+            `Logged in as ${currentUser?.email || "alex@focusflow.app"}`,
             [
                 { text: "Cancel", style: "cancel" },
                 {
                     text: "Log Out",
                     style: "destructive",
-                    onPress: onLogout,
+                    onPress: () => logout(),
                 },
             ]
         );
@@ -56,5 +54,6 @@ export default function Header() {
                     <Feather name="user" size={18} color="#FFFFFF" />
                 </TouchableOpacity>
             </View>
-        </View>)
+        </View>
+    );
 }
